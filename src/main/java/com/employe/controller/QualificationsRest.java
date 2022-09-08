@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Api(tags = "Qualifications management")
-
+@CrossOrigin(origins="http://localhost:4200")
 public class QualificationsRest {
 
    QualificationsService qualificationsService;
@@ -30,8 +30,8 @@ public class QualificationsRest {
         return qualificationsService.listQualifications();
     }
     @ApiOperation(value = "ajoute Qualifications")
-    @PostMapping(path="/qualifications")
-    public QualificationsResponseDTO save(QualificationsRequestDTO qualificationsRequestDTO){
+    @PostMapping(path="/savequalifications")
+    public QualificationsResponseDTO save(@RequestBody QualificationsRequestDTO qualificationsRequestDTO){
         return qualificationsService.save(qualificationsRequestDTO);
     }
     @ApiOperation(value = "Récupérer Qualifications")

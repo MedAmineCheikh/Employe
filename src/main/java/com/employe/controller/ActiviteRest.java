@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @Api(tags = "Activite management")
-
+@CrossOrigin(origins="http://localhost:4200")
 public class ActiviteRest {
 
     ActiviteService activiteService;
@@ -29,8 +29,8 @@ public class ActiviteRest {
         return activiteService.listActivites();
     }
     @ApiOperation(value = "ajoute Activite")
-    @PostMapping(path="/activite")
-    public ActiviteResponseDTO save(ActiviteRequestDTO activiteRequestDTO){
+    @PostMapping(path="/ajouteactivite")
+    public ActiviteResponseDTO save(@RequestBody ActiviteRequestDTO activiteRequestDTO){
         return activiteService.save(activiteRequestDTO);
     }
     @ApiOperation(value = "Récupérer Activite")

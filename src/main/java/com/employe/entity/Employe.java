@@ -1,6 +1,7 @@
 package com.employe.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,15 +22,21 @@ import static javax.persistence.CascadeType.PERSIST;
 public class Employe implements Serializable {
     @Id
     private String matricule;
+    @NotNull
     private String prenom_Nom;
+    @NotNull
     private Boolean chef_Projet;
     @Temporal(TemporalType.DATE)
     private Date charge_Salariale;
+    @NotNull
     private String n_Permis;
+    @Column(unique = true)
+    @NotNull
     private String n_Cin;
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Statut statut;
     @JsonIgnore
-    @ManyToMany(cascade={PERSIST, DETACH})
+    @ManyToMany(cascade={PERSIST, DETACH},fetch = FetchType.EAGER)
     private List<Activite> qualifications;
 }

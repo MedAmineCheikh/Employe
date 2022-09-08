@@ -1,6 +1,7 @@
 package com.employe.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ import static javax.persistence.CascadeType.*;
 @Data
 public class Activite extends Qualifications{
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Type_Activite type_activite;
     @ManyToMany(mappedBy = "qualifications",cascade={PERSIST, DETACH})
     @JsonIgnore

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @Api(tags = "Employe management")
-
+@CrossOrigin(origins="http://localhost:4200")
 public class EmployeRest {
     EmployeService employeService;
     ActiviteService activiteService;
@@ -37,9 +37,11 @@ public class EmployeRest {
     public List<EmployeResponseDTO> listActiveEmployes(){
         return employeService.listActiveEmployes();
     }
+
+
     @ApiOperation(value = "ajoute Employe")
     @PostMapping(path="/saveemploye")
-    public EmployeResponseDTO save(EmployeRequestDTO employeRequestDTO){
+    public EmployeResponseDTO save( @RequestBody EmployeRequestDTO employeRequestDTO){
         return employeService.save(employeRequestDTO);
     }
     @ApiOperation(value = "Récupérer Employe")

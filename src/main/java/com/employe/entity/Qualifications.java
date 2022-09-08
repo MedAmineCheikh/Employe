@@ -1,5 +1,6 @@
 package com.employe.entity;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,12 @@ import java.io.Serializable;
 public class Qualifications implements Serializable {
     @Id
     private String code;
+    @NotNull
     private String designation;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Statut statut;
+        @NotNull
     @Enumerated(EnumType.STRING)
     private Type_Qualification type_qualification;
 }
